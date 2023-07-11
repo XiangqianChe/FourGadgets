@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Four Gadgets</string>
+    <string name="bear_image_generator">Bear Image Generator</string>
+    <string name="aviation_stack_flight_tracker">Aviation Stack Flight Tracker</string>
+    <string name="currency_converter">Currency Converter</string>
+    <string name="trivia_question_database">Trivia Question Database</string>
+    <string name="author">by Victor Che</string>
+    <string name="help">HELP</string>
+    <string name="clear">Clear</string>
+    <string name="delete">DELETE</string>
+    <string name="close">CLOSE</string>
+    <string name="amount">Amount</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="convert">CONVERT</string>
+</resources>

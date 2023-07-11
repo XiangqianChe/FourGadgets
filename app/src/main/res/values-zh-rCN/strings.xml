@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Four Gadgets</string>
+    <string name="bear_image_generator">熊图生成器</string>
+    <string name="aviation_stack_flight_tracker">航空栈航班跟踪器</string>
+    <string name="currency_converter">货币换算</string>
+    <string name="trivia_question_database">琐事问题数据库</string>
+    <string name="author">来自 Victor Che</string>
+    <string name="help">帮助</string>
+    <string name="clear">清除</string>
+    <string name="delete">删除</string>
+    <string name="close">关闭</string>
+    <string name="amount">金额</string>
+    <string name="from">源货币</string>
+    <string name="to">目标货币</string>
+    <string name="convert">装换</string>
+</resources>

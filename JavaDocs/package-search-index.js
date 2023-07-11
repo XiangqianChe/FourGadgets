@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"algonquin.cst2335.fourgadgets"},{"l":"algonquin.cst2335.fourgadgets.dao"},{"l":"algonquin.cst2335.fourgadgets.database"},{"l":"algonquin.cst2335.fourgadgets.entity"},{"l":"algonquin.cst2335.fourgadgets.viewmodel"},{"l":"所有程序包","u":"allpackages-index.html"}];updateSearchResults();

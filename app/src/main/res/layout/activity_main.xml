@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_flight"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/aviation_stack_flight_tracker"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_flight"
+        app:srcCompat="@drawable/flight_large" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_currency"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/currency_converter"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_currency"
+        app:srcCompat="@drawable/currency_large" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_question"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/trivia_question_database"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question"
+        app:srcCompat="@drawable/question_large" />
+
+    <ImageButton
+        android:id="@+id/imgbtn_bear"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/bear_image_generator"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bear"
+        app:srcCompat="@drawable/bear_large" />
+
+    <TextView
+        android:id="@+id/tv_flight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/aviation_stack_flight_tracker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_currency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/currency_converter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_flight" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/trivia_question_database"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_currency" />
+
+    <TextView
+        android:id="@+id/tv_bear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bear_image_generator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_question" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/author"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgbtn_bear" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
