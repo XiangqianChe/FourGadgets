@@ -124,7 +124,7 @@ public class CurrencyActivity extends AppCompatActivity {
         }
         // get currency list in json from http server
         String url_available_currencies = "https://currency-converter5.p.rapidapi.com/currency/list"
-                + "?" + "rapidapi-key=86411869admsh5dd5a3890b256fbp15db65jsnad2e2486246d";
+                + "?" + "rapidapi-key=******";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url_available_currencies, null,
                 (Response.Listener<JSONObject>) response -> {
