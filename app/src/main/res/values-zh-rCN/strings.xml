@@ -14,4 +14,7 @@
     <string name="from">源货币</string>
     <string name="to">目标货币</string>
     <string name="convert">装换</string>
+    <string name="width">宽度：</string>
+    <string name="height">高度：</string>
+    <string name="bear">熊出没！</string>
 </resources>

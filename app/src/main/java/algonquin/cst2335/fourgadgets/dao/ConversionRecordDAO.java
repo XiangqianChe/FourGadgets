@@ -9,8 +9,9 @@ import java.util.List;
 
 import algonquin.cst2335.fourgadgets.entity.ConversionRecord;
 
-/**
- * DAO to CRUD conversion record
+/** DAO to CRUD conversion record
+ * @author Victor Che
+ * @version 1.0
  */
 @Dao
 public interface ConversionRecordDAO {

@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/different"
+        android:background="@color/lightyellow"
         android:layout_marginStart="30dp"
         android:layout_marginTop="450dp"
         android:layout_marginEnd="30dp"

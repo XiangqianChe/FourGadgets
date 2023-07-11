@@ -103,7 +103,7 @@ public class CurrencyActivity extends AppCompatActivity {
         rv_conversion.setLayoutManager(new LinearLayoutManager(this));
         // shared preferences
         preferences = getSharedPreferences("data_currency_conversion", Context.MODE_PRIVATE);
-        String amountFrom = preferences.getString("AmountFrom", "0");
+        String amountFrom = preferences.getString("AmountFrom", "1");
         input_money.setText(amountFrom);
         // get all records in database
         database = Room.databaseBuilder(this, CurrencyConversionDatabase.class, "database_currency_conversion").build();
@@ -331,7 +331,7 @@ public class CurrencyActivity extends AppCompatActivity {
             TextView tv_time = detailView.findViewById(R.id.tv_time);
             Button btn_delete = detailView.findViewById(R.id.btn_delete);
             Button btn_close = detailView.findViewById(R.id.btn_close);
-            // strings
+            // fields
             String currency_code_from = chosenRecord.getCurrencyCodeFrom();
             String currency_name_from = chosenRecord.getCurrencyNameFrom();
             String currency_code_to = chosenRecord.getCurrencyCodeTo();
@@ -378,7 +378,6 @@ public class CurrencyActivity extends AppCompatActivity {
                                 thread.execute(() -> crDAO.insert(chosenRecord));
                                 records.add(chosenPosition, chosenRecord);
                                 adapter.notifyItemInserted(chosenPosition);
-
                             }).show();
                 }).setNegativeButton("NO", (dialog, click2) -> {}).create().show();
     }
