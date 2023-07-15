@@ -17,4 +17,6 @@
     <string name="width">宽度：</string>
     <string name="height">高度：</string>
     <string name="bear">熊出没！</string>
+    <string name="your_name">你的名字：</string>
+    <string name="submit">提交</string>
 </resources>

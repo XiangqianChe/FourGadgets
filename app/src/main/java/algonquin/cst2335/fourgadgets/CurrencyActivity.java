@@ -32,7 +32,6 @@ import androidx.room.Room;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
@@ -124,10 +123,10 @@ public class CurrencyActivity extends AppCompatActivity {
         }
         // get currency list in json from http server
         String url_available_currencies = "https://currency-converter5.p.rapidapi.com/currency/list"
-                + "?" + "rapidapi-key=******";
+                + "?" + "rapidapi-key=86411869admsh5dd5a3890b256fbp15db65jsnad2e2486246d";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url_available_currencies, null,
-                (Response.Listener<JSONObject>) response -> {
+                response -> {
                     try {
                         JSONObject currencies_json = response.getJSONObject("currencies");
                         // put json into string array
@@ -206,10 +205,10 @@ public class CurrencyActivity extends AppCompatActivity {
                 + "&" + "from=" + currency_from[0]
                 + "&" + "to=" + currency_to[0]
                 + "&" + "amount=" + money_from
-                + "&" + "rapidapi-key=86411869admsh5dd5a3890b256fbp15db65jsnad2e2486246d";
+                + "&" + "rapidapi-key=******";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url_currency_convertor, null,
-                (Response.Listener<JSONObject>) response -> {
+                response -> {
                     try {
                         String currency_code_from = currency_from[0];
                         String currency_name_from = response.getString("base_currency_name");
@@ -227,7 +226,7 @@ public class CurrencyActivity extends AppCompatActivity {
                             records.addAll(crDAO.getAll());
                         });
                         records.add(insertedRecord);
-                        runOnUiThread(() -> adapter.notifyItemInserted(adapter.getItemCount() - 1));
+                        adapter.notifyItemInserted(adapter.getItemCount() - 1);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -300,9 +299,9 @@ public class CurrencyActivity extends AppCompatActivity {
             tv_time = itemView.findViewById(R.id.tv_time);
             // delete and undo actions
             itemView.setOnClickListener(click -> {
-                int chosenPositon = getAdapterPosition();
-                ConversionRecord chosenRecord = records.get(chosenPositon);
-                RecordDetailFragment detailFragment = new RecordDetailFragment(chosenRecord, chosenPositon);
+                int chosenPosition = getAdapterPosition();
+                ConversionRecord chosenRecord = records.get(chosenPosition);
+                RecordDetailFragment detailFragment = new RecordDetailFragment(chosenRecord, chosenPosition);
                 getSupportFragmentManager().beginTransaction().replace(R.id.layout_currency, detailFragment).commit();
             });
         }
