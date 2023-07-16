@@ -19,4 +19,10 @@
     <string name="bear">熊出没！</string>
     <string name="your_name">你的名字：</string>
     <string name="submit">提交</string>
+    <string name="airport_code">机场编码：</string>
+    <string name="new_quiz">新测验！</string>
+    <string name="see_top_10_records">查看前十名</string>
+    <string name="saved_flights">已保存的航班</string>
+    <string name="save">保存</string>
+    <string name="search_flights">搜索航班</string>
 </resources>

@@ -205,7 +205,7 @@ public class CurrencyActivity extends AppCompatActivity {
                 + "&" + "from=" + currency_from[0]
                 + "&" + "to=" + currency_to[0]
                 + "&" + "amount=" + money_from
-                + "&" + "rapidapi-key=******";
+                + "&" + "rapidapi-key=***************";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url_currency_convertor, null,
                 response -> {
@@ -225,7 +225,6 @@ public class CurrencyActivity extends AppCompatActivity {
                             records.clear();
                             records.addAll(crDAO.getAll());
                         });
-                        records.add(insertedRecord);
                         adapter.notifyItemInserted(adapter.getItemCount() - 1);
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -18,4 +18,10 @@
     <string name="bear">BEAR!</string>
     <string name="your_name">Your Name:</string>
     <string name="submit">SUBMIT</string>
+    <string name="airport_code">Airport Code: </string>
+    <string name="new_quiz">New QUIZ!</string>
+    <string name="see_top_10_records">See Top 10 Records</string>
+    <string name="saved_flights">Saved Flights</string>
+    <string name="save">SAVE</string>
+    <string name="search_flights">Search FLIGHTS</string>
 </resources>

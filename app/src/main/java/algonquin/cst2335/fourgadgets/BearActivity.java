@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.snackbar.Snackbar;
@@ -118,7 +117,7 @@ public class BearActivity extends AppCompatActivity {
             String url_bear_image_generator = "https://placebear.com/" + input_width +"/" + input_height;
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             ImageRequest request = new ImageRequest(url_bear_image_generator,
-                    (Response.Listener<Bitmap>) response -> {
+                    response -> {
                         ByteBuffer byteBuffer = ByteBuffer.allocate(response.getByteCount());
                         response.copyPixelsToBuffer(byteBuffer);
                         byte[] bearImgData = byteBuffer.array();
@@ -131,7 +130,6 @@ public class BearActivity extends AppCompatActivity {
                             records.clear();
                             records.addAll(brDAO.getAll());
                         });
-                        records.add(insertedRecord);
                         runOnUiThread(() -> adapter.notifyItemInserted(adapter.getItemCount() - 1));
                     }, 0, 0, ImageView.ScaleType.CENTER, Bitmap.Config.RGB_565,
                     error -> {}
