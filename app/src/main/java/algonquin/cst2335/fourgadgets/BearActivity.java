@@ -129,8 +129,8 @@ public class BearActivity extends AppCompatActivity {
                             brDAO.insert(insertedRecord);
                             records.clear();
                             records.addAll(brDAO.getAll());
+                            runOnUiThread(() -> adapter.notifyItemInserted(adapter.getItemCount() - 1));
                         });
-                        runOnUiThread(() -> adapter.notifyItemInserted(adapter.getItemCount() - 1));
                     }, 0, 0, ImageView.ScaleType.CENTER, Bitmap.Config.RGB_565,
                     error -> {}
             );

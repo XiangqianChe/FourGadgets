@@ -152,7 +152,7 @@ public class QuestionActivity extends AppCompatActivity {
                             String quizTime = format.format(new Date());
                             Quiz quiz = new Quiz(quizName, QAs, quizTime);
                             quizzes.add(quiz);
-                            runOnUiThread(() -> adapter.notifyItemInserted(adapter.getItemCount() - 1));
+                            adapter.notifyItemInserted(adapter.getItemCount() - 1);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

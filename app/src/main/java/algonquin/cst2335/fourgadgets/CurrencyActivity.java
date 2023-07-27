@@ -113,12 +113,14 @@ public class CurrencyActivity extends AppCompatActivity {
             viewModel.records.postValue((ArrayList<ConversionRecord>) (records = new ArrayList<>()));
             thread.execute(() -> {
                 records.addAll(crDAO.getAll());
-                if (records.size() > 0) {
-                    btn_clear_records.setVisibility(View.VISIBLE);
-                } else {
-                    btn_clear_records.setVisibility(View.INVISIBLE);
-                }
-                runOnUiThread(() -> rv_conversion.setAdapter(adapter));
+                runOnUiThread(() -> {
+                    if (records.size() > 0) {
+                        btn_clear_records.setVisibility(View.VISIBLE);
+                    } else {
+                        btn_clear_records.setVisibility(View.INVISIBLE);
+                    }
+                    rv_conversion.setAdapter(adapter);
+                });
             });
         }
         // get currency list in json from http server
@@ -140,10 +142,8 @@ public class CurrencyActivity extends AppCompatActivity {
                         Collections.sort(currencies_arr);
                         // put string array into spinner
                         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, currencies_arr);
-                        runOnUiThread(() -> {
-                            spinner_from.setAdapter(arrayAdapter);
-                            spinner_to.setAdapter(arrayAdapter);
-                        });
+                        spinner_from.setAdapter(arrayAdapter);
+                        spinner_to.setAdapter(arrayAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -205,7 +205,7 @@ public class CurrencyActivity extends AppCompatActivity {
                 + "&" + "from=" + currency_from[0]
                 + "&" + "to=" + currency_to[0]
                 + "&" + "amount=" + money_from
-                + "&" + "rapidapi-key=***************";
+                + "&" + "rapidapi-key=86411869admsh5dd5a3890b256fbp15db65jsnad2e2486246d";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url_currency_convertor, null,
                 response -> {
@@ -224,8 +224,8 @@ public class CurrencyActivity extends AppCompatActivity {
                             crDAO.insert(insertedRecord);
                             records.clear();
                             records.addAll(crDAO.getAll());
+                            runOnUiThread(() -> adapter.notifyItemInserted(adapter.getItemCount() - 1));
                         });
-                        adapter.notifyItemInserted(adapter.getItemCount() - 1);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

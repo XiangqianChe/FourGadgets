@@ -52,6 +52,7 @@ import algonquin.cst2335.fourgadgets.viewmodel.FlightRecordViewModel;
 public class FlightActivity extends AppCompatActivity {
     // global fields
     EditText et_airportcode;
+    String airportCode;
     RecyclerView rv_searchedflights;
     RecyclerView rv_savedflights;
     /** Adapter for flight record */
@@ -94,7 +95,7 @@ public class FlightActivity extends AppCompatActivity {
         rv_searchedflights.setLayoutManager(new LinearLayoutManager(this));
         // shared preferences
         preferences = getSharedPreferences("data_airport_stack_flight_tracker", Context.MODE_PRIVATE);
-        String airportCode = preferences.getString("AirportCode", "YOW");
+        airportCode = preferences.getString("AirportCode", "YOW");
         et_airportcode.setText(airportCode);
         // get all records in database
         database = Room.databaseBuilder(this, AviationStackFlightTrackerDatabase.class, "database_airport_stack_flight_tracker").build();
@@ -113,11 +114,19 @@ public class FlightActivity extends AppCompatActivity {
         // get flight search result in json
         btn_searchflights.setOnClickListener(click -> {
             // shared preferences
-            String airportCode1 = et_airportcode.getText().toString();
+            airportCode = et_airportcode.getText().toString();
+            if ("".equals(airportCode)) {
+                airportCode = "YOW";
+            }
             editor = preferences.edit();
-            editor.putString("AirportCode", airportCode1).apply();
+            editor.putString("AirportCode", airportCode).apply();
+            // clear last records
+            for (int i = searchingResults.size() - 1; i >= 0; i--) {
+                adapterSearching.notifyItemRemoved(i);
+            }
+            searchingResults.clear();
             // get flight search result in json from http server
-            String url_airport_stack_flight_tracker = "http://api.aviationstack.com/v1/flights?access_key=144b72dbdc1e8f20f8346ea2f5f6fa0c&limit=10&dep_iata=" + airportCode1;
+            String url_airport_stack_flight_tracker = "http://api.aviationstack.com/v1/flights?access_key=144b72dbdc1e8f20f8346ea2f5f6fa0c&limit=10&dep_iata=" + airportCode;
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url_airport_stack_flight_tracker, null,
                     response -> {
@@ -130,15 +139,16 @@ public class FlightActivity extends AppCompatActivity {
                             JSONArray data = response.getJSONArray("data");
                             for (int i = 0; i < data.length(); i++) {
                                 JSONObject flight = (JSONObject)(data.get(i));
+                                airportCode = flight.getJSONObject("departure").getString("iata");
                                 String destination = flight.getJSONObject("arrival").getString("iata");
                                 String flightDate = flight.getString("flight_date");
                                 String flightNumber = flight.getJSONObject("flight").getString("number");
                                 String terminal = flight.getJSONObject("departure").getString("terminal");
                                 String gate = flight.getJSONObject("departure").getString("gate");
                                 String delay = flight.getJSONObject("departure").getString("delay");
-                                FlightRecord insertedSearchingResult = new FlightRecord(airportCode1, destination, flightDate, flightNumber, terminal, gate, delay);
+                                FlightRecord insertedSearchingResult = new FlightRecord(airportCode, destination, flightDate, flightNumber, terminal, gate, delay);
                                 searchingResults.add(insertedSearchingResult);
-                                runOnUiThread(() -> adapterSearching.notifyItemInserted(adapterSearching.getItemCount() - 1));
+                                adapterSearching.notifyItemInserted(adapterSearching.getItemCount() - 1);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
